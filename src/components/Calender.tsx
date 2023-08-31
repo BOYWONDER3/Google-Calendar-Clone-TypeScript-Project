@@ -14,6 +14,7 @@ import {
 } from "date-fns";
 import { formatDate } from "../utils/formatDate";
 import { cc } from "../utils/cc";
+import { useEvents } from "../context/UseEvent";
 
 export function Calendar() {
   const [selectedMonth, setSelectedMonth] = useState(new Date());
@@ -73,6 +74,8 @@ type CalendarDayProps = {
 };
 
 function CalendarDay({ day, showWeekName, selectedMonth }: CalendarDayProps) {
+  const { addEvent } = useEvents();
+
   return (
     <div
       className={cc(
@@ -109,4 +112,8 @@ function CalendarDay({ day, showWeekName, selectedMonth }: CalendarDayProps) {
       </div> */}
     </div>
   );
+}
+
+function EventFormModal() {
+  
 }
