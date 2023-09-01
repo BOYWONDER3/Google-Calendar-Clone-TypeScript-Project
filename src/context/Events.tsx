@@ -3,7 +3,7 @@ import { UnionOmit } from "../utils/types";
 import { EVENT_COLORS } from "./UseEvent";
 
 
-type Event = {
+export type Event = {
   id: string;
   name: string;
   color: (typeof EVENT_COLORS)[number];
