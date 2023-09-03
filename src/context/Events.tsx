@@ -41,28 +41,30 @@ export function EventsProvider({ children }: EventsProviderProps) {
   }
 
   function deleteEvent(id: string) {
-    setEvents(e => e.filter(event => event.id !== id))
+    setEvents((e) => e.filter((event) => event.id !== id));
   }
 
   return (
-    <Context.Provider value={{ events, addEvent, updateEvent, deleteEvent }}>{children}</Context.Provider>
+    <Context.Provider value={{ events, addEvent, updateEvent, deleteEvent }}>
+      {children}
+    </Context.Provider>
   );
 }
 
 function useLocalStorage(key: string, initialValue: Event[]) {
   const [value, setValue] = useState<Event[]>(() => {
-    const jsonValue = localStorage.getItem(key)
-    if (jsonValue == null) return initialValue
+    const jsonValue = localStorage.getItem(key);
+    if (jsonValue == null) return initialValue;
 
-    return (JSON.parse(jsonValue) as Event[]).map(event => {
-      if(event.date instanceof Date) return event
-      return {...event, date: new Date(event.date)}
-    })
-  })
+    return (JSON.parse(jsonValue) as Event[]).map((event) => {
+      if (event.date instanceof Date) return event;
+      return { ...event, date: new Date(event.date) };
+    });
+  });
 
   useEffect(() => {
-    localStorage.setItem(key, JSON.stringify(value))
-  }, [value, key])
+    localStorage.setItem(key, JSON.stringify(value));
+  }, [value, key]);
 
-  return [value, setValue] as const 
+  return [value, setValue] as const;
 }
