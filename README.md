@@ -24,3 +24,5 @@
 7. Added a closing animation to the modals.
 - A closing class was added to the modal to trigger the closing animation.
 - The modal should only be removed from the DOM after the animation finishes to ensure if has a nice smooth transition out.
+
+### This Project is Production buillt and can be viewed live here - ( https://64f7b929a2b0fc0f43d845f8--zesty-speculoos-66f1d6.netlify.app/ )
